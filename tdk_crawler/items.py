@@ -9,7 +9,7 @@ from scrapy.item import Item, Field
 
 
 class TdkCrawlerItem(Item):
-	# define the fields for your item here like:
-	meta_data = Field()
-	meaning = Field()
+		# define the fields for your item here like:
+		meta = Field()
+		meaning = Field()
 

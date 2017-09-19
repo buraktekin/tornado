@@ -12,19 +12,19 @@ __copyright__ = "Copyleft 2017, Project Tornado"
 __license__ = "MIT"
 __version__ = "0.0.1"
 __email__ = "tekinbk@ims.uni-stuttgart.de"
-__status__ = "Production"
+__status__ = "Staging"
 __credits__ = [
 	{
-		'contributor': 'https://github.com/mertemin/turkish-word-list',
+		'contributor': 'https://github.com/mertemin',
 		'contribution': 'Turkish word list'
 	}
 ]
 
 # RECIPE: 
 # ---------------------------------------------------------
-# listofwords -> Spider -> Object (key, value pairs),
-# Object: {word: "...", meaning: "..."}, type: JSON,
-# word: String, meaning: String,
+# listofwords(list) -> Spider() -> Output(JSON format file)
+# Output Object: {word: {meaning: ["..."], meta_data:[...]}
+# word: String, meaning: listofstring, meta_data: listofString
 # ----------------------------------------------------------
 
 import scrapy
@@ -45,8 +45,8 @@ from tdk_crawler.items import TdkCrawlerItem
 # Problem
 # ----------------------------------------------------------
 # No implicit word list exist on web page and no links exist
-# to follow to crawl recursively. Query string parameters
-# are also hidden. 
+# to follow to crawl the page recursively. Query string 
+# parameters are also hidden.
 #
 # Solution:
 # ----------------------------------------------------------
@@ -95,27 +95,21 @@ class Spiderman(CrawlSpider):
 			source = browser.page_source
 			hxs = scrapy.Selector(text=source)
 			meanings = hxs.xpath("//*[@id='hor-minimalist-a']/tbody/tr/td").extract()
-			list_of_meanings = []
-			list_of_meta_data = []
+
 			for (index, meaning) in enumerate(meanings):
 				meaning = meaning.replace('\n\t\t', '').strip()
 				meaning_cleaned = re.findall(r'</i>(.*)<br>', meaning)
 				meta_data = re.findall(r'<i>(.*)</i>', meaning)
-
-				list_of_meanings.append(meaning)
-				list_of_meta_data.append(meta_data)
-
-				print "\n", list_of_meanings, list_of_meta_data
 				
-				item = TdkCrawlerItem()
-				item['meaning'] = meaning_cleaned[0]
-				item['meta_data'] = meta_data[0]
-				item = dict(item)
-				
-				if(word in data):
-					data['data'][word].append(item)
+				tdk_item = TdkCrawlerItem()
+				tdk_item['meta'] = meta_data[0]
+				tdk_item['meaning'] = meaning_cleaned
+				tdk_item = dict(tdk_item)
+
+				if(word in data['data']):
+					data['data'][word].append(tdk_item)
 				else:
-					data['data'][word] = [item]
+					data['data'][word] = [tdk_item]
 
 			# Next word...
 			word_no += 1
