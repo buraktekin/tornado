@@ -115,11 +115,10 @@ class Spiderman(CrawlSpider):
 
 		for meaning in meanings:
 			parsed_text = self.parser.get_texts_from_tags(meaning)
-			for items in parsed_text:
-				if(word in self.data):
-					self.data[word].append(items)
-				else:
-					self.data[word] = [items]
+			if(word in self.data):
+				self.data[word].append(parsed_text)
+			else:
+				self.data[word] = [parsed_text]
 
 		return self.data
 

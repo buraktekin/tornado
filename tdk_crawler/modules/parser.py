@@ -49,8 +49,17 @@ class Parser():
 		self.example = ""
 
 	def get_texts_from_tags(self, source):
-		container = list()
+		container = dict()
+		body_container = list()
+		header_container = list()
 		soup = BeautifulSoup(source)
+		for header in soup.findAll('th'):
+			header_info = header.find('i')
+			header_meta = header_info.find('b').getText().strip()
+			header_info = header_info.text.replace(header_meta, '', 1).strip()
+			header_container.append(header_meta + " " + header_info)
+			container['header'] = header_container
+
 		source = re.sub(r'<b>(.*)</b>', '', source)
 		source = source.replace('\n\t\t', '')
 		for node in soup.findAll('td'):
@@ -66,8 +75,10 @@ class Parser():
 			tdk_item['meaning'] = self.meaning.replace('\"', '')
 			tdk_item['example'] = self.example.replace('\"', '')
 			tdk_item = dict(tdk_item)
-			container.append(tdk_item)
-		
+			body_container.append(tdk_item)
+			
+			container['body'] = body_container
+
 		return container
 
 
