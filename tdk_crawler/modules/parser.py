@@ -49,7 +49,6 @@ class Parser():
 		self.example = ""
 		
 
-
 	def parse_header(self, source, soup):
 		header_container = list()
 		for header in soup.findAll('th'):
@@ -58,6 +57,7 @@ class Parser():
 			header_info = header_info.text.replace(header_meta, '', 1).strip()
 			header_container.append(header_meta + " " + header_info)
 		return header_container
+
 
 	def parse_body(self, source, soup):
 		body_container = list()
@@ -78,6 +78,7 @@ class Parser():
 			tdk_item = dict(tdk_item)
 			body_container.append(tdk_item)	
 		return body_container
+
 
 	def get_texts_from_tags(self, source):
 		container = dict()
