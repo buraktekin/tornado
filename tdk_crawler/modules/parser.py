@@ -47,19 +47,20 @@ class Parser():
 		self.meta = ""
 		self.meaning = ""
 		self.example = ""
+		
 
-	def get_texts_from_tags(self, source):
-		container = dict()
-		body_container = list()
+
+	def parse_header(self, source, soup):
 		header_container = list()
-		soup = BeautifulSoup(source)
 		for header in soup.findAll('th'):
 			header_info = header.find('i')
 			header_meta = header_info.find('b').getText().strip()
 			header_info = header_info.text.replace(header_meta, '', 1).strip()
 			header_container.append(header_meta + " " + header_info)
-			container['header'] = header_container
+		return header_container
 
+	def parse_body(self, source, soup):
+		body_container = list()
 		source = re.sub(r'<b>(.*)</b>', '', source)
 		source = source.replace('\n\t\t', '')
 		for node in soup.findAll('td'):
@@ -75,10 +76,16 @@ class Parser():
 			tdk_item['meaning'] = self.meaning.replace('\"', '')
 			tdk_item['example'] = self.example.replace('\"', '')
 			tdk_item = dict(tdk_item)
-			body_container.append(tdk_item)
-			
-			container['body'] = body_container
+			body_container.append(tdk_item)	
+		return body_container
 
+	def get_texts_from_tags(self, source):
+		container = dict()
+		soup = BeautifulSoup(source)
+		header_container = self.parse_header(source, soup)
+		body_container = self.parse_body(source, soup)
+		container['header'] = header_container
+		container['body'] = body_container
 		return container
 
 

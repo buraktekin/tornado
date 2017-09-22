@@ -58,6 +58,7 @@ from tdk_crawler.modules.parser import Parser
 class Spiderman(CrawlSpider):
 	name = 'tornado'
 	data = dict()
+	
 
 	def create_word_list(self):
 		list_of_words = []
@@ -67,12 +68,14 @@ class Spiderman(CrawlSpider):
 
 		return list_of_words
 
+
 	def __init__(self):
 		self.url = 'http://www.tdk.gov.tr/index.php?option=com_gts&kelime='
 		self.dictionary = self.create_word_list()
 		self.allowed_domains = ["www.tdk.gov.tr"]
 		self.start_urls = [self.url]
 		self.parser = Parser()
+
 
 	def word_log(self, word):
 		now = time.strftime("%c")
@@ -87,6 +90,7 @@ class Spiderman(CrawlSpider):
 			
 			log.write(line)
 			log.flush()
+
 
 	def parse(self, response):
 		try:
@@ -105,6 +109,7 @@ class Spiderman(CrawlSpider):
 			print("Next word...")
 
 		yield self.data
+
 
 	def parse_recursively(self, response):
 		word = response.meta['word'].decode('utf-8')
