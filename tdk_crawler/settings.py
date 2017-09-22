@@ -13,6 +13,7 @@ BOT_NAME = 'tdk_crawler'
 
 SPIDER_MODULES = ['tdk_crawler.spiders']
 NEWSPIDER_MODULE = 'tdk_crawler.spiders'
+
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {'tdk_crawler.pipelines.TdkCrawlerPipeline': 300}
@@ -21,7 +22,7 @@ ITEM_PIPELINES = {'tdk_crawler.pipelines.TdkCrawlerPipeline': 300}
 #USER_AGENT = 'tdk_crawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -35,7 +36,7 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False

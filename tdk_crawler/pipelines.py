@@ -12,14 +12,14 @@ class TdkCrawlerPipeline(object):
 	def __init__(self):
 		self.file = codecs.open('data_encoded.json', 'w', encoding='utf-8')
 
-	def process_item(self, item, spider):
-		return item
+	# def process_item(self, item, spider):
+		# return item
 
 	def close_spider(self, spider):
 		line = json.dumps(dict(spider.data), 
 			sort_keys=True, 
-			ensure_ascii=False, 
 			indent=4,
-			separators=(',',':'))
+			ensure_ascii=False, 
+		)
 		self.file.write(line)
 		self.file.close()

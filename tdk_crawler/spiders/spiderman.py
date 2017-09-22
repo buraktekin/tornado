@@ -37,10 +37,7 @@ import re
 
 from definitions import ROOT_DIR
 from scrapy.spiders import CrawlSpider
-from scrapy.selector import HtmlXPathSelector
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from tdk_crawler.items import TdkCrawlerItem
+from tdk_crawler.modules.parser import Parser
 
 # ----------------------------------------------------------
 # Problem
@@ -58,26 +55,24 @@ from tdk_crawler.items import TdkCrawlerItem
 
 # Code:
 # ----------------------------------------------------------
-browser = webdriver.Chrome(ROOT_DIR + "/chromedriver")
-browser.implicitly_wait(30)
-browser.get("http://www.tdk.gov.tr/index.php?option=com_gts&arama=gts")
-
 class Spiderman(CrawlSpider):
 	name = 'tornado'
+	data = dict()
 
 	def create_word_list(self):
 		list_of_words = []
 		with codecs.open(ROOT_DIR + '/words/words.txt', 'r', encoding='utf-8') as words:
 			for word in words.readlines():
-				list_of_words.append(word)
+				list_of_words.append(word.encode('utf-8').replace('\n', ''))
 
 		return list_of_words
 
 	def __init__(self):
-		self.allowed_domains = ["www.tdk.gov.tr"]
-		self.start_urls = ["http://tdk.gov.tr/index.php?option=com_gts&arama=gts"]
+		self.url = 'http://www.tdk.gov.tr/index.php?option=com_gts&kelime='
 		self.dictionary = self.create_word_list()
-		self.limit = len(self.dictionary)
+		self.allowed_domains = ["www.tdk.gov.tr"]
+		self.start_urls = [self.url]
+		self.parser = Parser()
 
 	def word_log(self, word):
 		now = time.strftime("%c")
@@ -94,47 +89,39 @@ class Spiderman(CrawlSpider):
 			log.flush()
 
 	def parse(self, response):
-		word_no = 0
-		data = dict()
-		data['data'] = dict()
+		try:
+			for (index, word) in enumerate(self.dictionary):
+				if(index > 10):
+					break
+				url = self.url + word
+				yield scrapy.http.Request(
+					url=url, 
+					meta={'word': word, 'word_no': index}, 
+					callback=self.parse_recursively
+				)
+		except:
+			print("Oops!",sys.exc_info()[0],"occured.")
+			self.word_log(word)
+			print("Next word...")
 
-		while(word_no <= self.limit):
-			word = self.dictionary[word_no].replace('\n','')
-			print "\nCurrent Word: \t" + word + "\n"
-			try:
-				time.sleep(1) # time's given to let the DOM updates itself
-				input_field = browser.find_element_by_id('metin')
-				browser.execute_script("arguments[0].value = ''", input_field) # Update input field to request words
-				input_field.send_keys(word, Keys.RETURN)
+		yield self.data
 
-				# get source of the page returned after request
-				source = browser.page_source
-				hxs = scrapy.Selector(text=source)
-				meanings = hxs.xpath("//*[@id='hor-minimalist-a']/tbody/tr/td").extract()
+	def parse_recursively(self, response):
+		word = response.meta['word'].decode('utf-8')
+		word_no = response.meta['word_no']
+		hxs = scrapy.Selector(response)
+		meanings = hxs.xpath("//table[@id='hor-minimalist-a']").extract()
+		print "\nCurrent Word: \t" + word + "\n" + "Word No: " + str(word_no) + "\n"
 
-				for (index, meaning) in enumerate(meanings):
-					meaning = meaning.replace('\n\t\t', '').strip()
-					meaning_cleaned = re.findall(r'</i>(.*)<br>', meaning)
-					meta_data = re.findall(r'<i>(.*)</i>', meaning)
-					
-					tdk_item = TdkCrawlerItem()
-					tdk_item['meta'] = meta_data[0]
-					tdk_item['meaning'] = meaning_cleaned
-					tdk_item = dict(tdk_item)
+		for meaning in meanings:
+			parsed_text = self.parser.get_texts_from_tags(meaning)
+			for items in parsed_text:
+				if(word in self.data):
+					self.data[word].append(items)
+				else:
+					self.data[word] = [items]
 
-					if(word in data['data']):
-						data['data'][word].append(tdk_item)
-					else:
-						data['data'][word] = [tdk_item]
-			except:
-				print("Oops!",sys.exc_info()[0],"occured.")
-				self.word_log(word)
-				print("Next word...")
-
-			# Next word...
-			word_no += 1
-		yield data
-
+		return self.data
 
 
 

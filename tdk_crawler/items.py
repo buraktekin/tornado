@@ -12,4 +12,5 @@ class TdkCrawlerItem(Item):
 		# define the fields for your item here like:
 		meta = Field()
 		meaning = Field()
+		example = Field()
 
