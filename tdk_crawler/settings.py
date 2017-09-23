@@ -13,7 +13,7 @@ BOT_NAME = 'tdk_crawler'
 
 SPIDER_MODULES = ['tdk_crawler.spiders']
 NEWSPIDER_MODULE = 'tdk_crawler.spiders'
-
+LOG_ENABLED = False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {'tdk_crawler.pipelines.TdkCrawlerPipeline': 300}

@@ -58,7 +58,7 @@ from tdk_crawler.modules.parser import Parser
 class Spiderman(CrawlSpider):
 	name = 'tornado'
 	data = dict()
-	
+
 
 	def create_word_list(self):
 		list_of_words = []
@@ -95,8 +95,6 @@ class Spiderman(CrawlSpider):
 	def parse(self, response):
 		try:
 			for (index, word) in enumerate(self.dictionary):
-				if(index > 10):
-					break
 				url = self.url + word
 				yield scrapy.http.Request(
 					url=url, 
@@ -107,8 +105,6 @@ class Spiderman(CrawlSpider):
 			print("Oops!",sys.exc_info()[0],"occured.")
 			self.word_log(word)
 			print("Next word...")
-
-		yield self.data
 
 
 	def parse_recursively(self, response):
