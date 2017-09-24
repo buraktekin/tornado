@@ -23,21 +23,9 @@ __credits__ = [
 # RECIPE: 
 # ---------------------------------------------------------
 # listofwords(list) -> Spider() -> Output(JSON format file)
-# Output Object: {word: {meaning: ["..."], meta_data:[...]}
+# Output Object: {word: {meaning: ["..."], meta: [...]}
 # word: String, meaning: listofstring, meta_data: listofString
 # ----------------------------------------------------------
-
-import scrapy
-import codecs
-import json
-import time
-import sys
-import os
-import re
-
-from definitions import ROOT_DIR
-from scrapy.spiders import CrawlSpider
-from tdk_crawler.modules.parser import Parser
 
 # ----------------------------------------------------------
 # Problem
@@ -55,6 +43,18 @@ from tdk_crawler.modules.parser import Parser
 
 # Code:
 # ----------------------------------------------------------
+import scrapy
+import codecs
+import json
+import time
+import sys
+import os
+import re
+
+from definitions import ROOT_DIR
+from scrapy.spiders import CrawlSpider
+from tdk_crawler.modules.parser import Parser
+
 class Spiderman(CrawlSpider):
 	name = 'tornado'
 	data = dict()
