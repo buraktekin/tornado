@@ -16,7 +16,7 @@ After you have virtualenv run:
 ```scrapy crawl tornado```
 
 # Extra Information:
-For now, the system works for by corpus called 'words.txt' under the folder 'words'. You can modify this corpus with your own but the name should remain the same. This project will be improved and parameterized soon. After that, you will be able to use our system by giving your file's path directly.
+For now, the system works by the corpus called 'words.txt' under the folder 'words'. You can modify this corpus with your own but the name should remain the same. This project will be improved and parameterized soon. After that, you will be able to use our system by giving your file's path directly.
 
 ### Stats
 * Device: **MacBook Pro (Retina, 13-inch, Mid 2014)**
