@@ -23,6 +23,6 @@ For now, the system works for by corpus called 'words.txt' under the folder 'wor
 * Processor: **2,6 GHz Intel Core i5**
 * Memory: **8 GB 1600 MHz DDR3**
 * Data size: **63840 words // 701KB**
-* Completion Time: **~3600sec**
+* Completion Time: **~3600sec (~1000 words/min)**
 
 ⚠: _It really takes too much time to complete crawling. We will make some progress to drop it down later on._
