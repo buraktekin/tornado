@@ -67,9 +67,7 @@ class Parser():
 			text = re.findall('\"(.*)', node.getText())
 			self.example = text[0] if len(text) > 0 else ""
 			self.meta = node.find('i').getText()
-			self.meaning = node.text\
-										.replace(self.meta,'', 1)\
-										.replace(self.example, "")
+			self.meaning = node.text.replace(self.meta,'', 1).replace(self.example, "")
 
 			tdk_item = TdkCrawlerItem()
 			tdk_item['meta'] = self.meta
