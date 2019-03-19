@@ -62,7 +62,7 @@ class Spiderman(CrawlSpider):
 
 	def create_word_list(self):
 		list_of_words = []
-		with codecs.open(ROOT_DIR + '/words/words.txt', 'r', encoding='utf-8') as words:
+		with codecs.open(ROOT_DIR + '/words/word_sample.txt', 'r', encoding='utf-8') as words:
 			for word in words.readlines():
 				list_of_words.append(word.encode('utf-8').replace('\n', ''))
 

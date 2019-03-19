@@ -1,0 +1,288 @@
+{
+    "Abana": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Kastamonu iline bağlı ilçelerden biri", 
+                    "meta": "özel, isim"
+                }
+            ], 
+            "header": [
+                "özel, isim (aba'na) "
+            ]
+        }
+    ], 
+    "Abbas": [
+        {
+            "body": [
+                {
+                    "example": "Yola çıkacak veya ölümü yaklaşan kimse anlamlarındaki Abbas yolcu deyiminde geçen bir söz", 
+                    "meaning": "", 
+                    "meta": "özel, isim"
+                }
+            ], 
+            "header": [
+                "özel, isim Arapça ʿabbās"
+            ]
+        }
+    ], 
+    "ab": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Su", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim (a:b) eskimiş Farsça āb"
+            ]
+        }
+    ], 
+    "aba": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "1.Abla", 
+                    "meta": "isim"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "2.Anne", 
+                    "meta": ""
+                }
+            ], 
+            "header": [
+                "isim  halk ağzında "
+            ]
+        }, 
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "1.Yünün dövülmesiyle yapılan kalın ve kaba kumaş", 
+                    "meta": "isim"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "2.Bu kumaştan yapılmış yakasız ve uzun üstlük", 
+                    "meta": ""
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "3.Bu kumaştan yapılan", 
+                    "meta": "sıfat"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "4.Bu kumaştan yapılan ve dervişlerce giyilen hırka", 
+                    "meta": ""
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "5.Kepenek (I)", 
+                    "meta": ""
+                }
+            ], 
+            "header": [
+                "isim Arapça ʿabā"
+            ]
+        }
+    ], 
+    "aba güreşi": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Aba giyilerek ve bele kuşak bağlanarak yapılan bir güreş türü", 
+                    "meta": "isim, spor"
+                }
+            ], 
+            "header": [
+                "isim, spor "
+            ]
+        }
+    ], 
+    "abacı": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "1.Aba yapan veya satan kimse", 
+                    "meta": "isim"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "2.Abadan giyecek yapan veya satan kimse", 
+                    "meta": ""
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "3.Asalak", 
+                    "meta": "sıfat"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "4.Bedavacı", 
+                    "meta": ""
+                }
+            ], 
+            "header": [
+                "isim "
+            ]
+        }
+    ], 
+    "abacılık": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Abacının yaptığı iş", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim "
+            ]
+        }
+    ], 
+    "abadi": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Açık saman renginde, ipekten yapılan, yarı mat, kalınca bir yazı kâğıdı türü", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim (a:ba:di:) eskimiş Farsça ābādī"
+            ]
+        }
+    ], 
+    "abajur": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "1.Işığı bir yere toplamak, doğrudan doğruya gözlere vurmasını önlemek için kullanılan, kâğıt, kumaş, maden veya renkli camdan yapılmış lamba siperi", 
+                    "meta": "isim"
+                }, 
+                {
+                    "example": "Etajerin sağında bir telefon, ortasında bir heykel, solunda bir abajur. -N. F. Kısakürek", 
+                    "meaning": "2.Genellikle üzeri siperli masa lambası veya ayaklı lamba", 
+                    "meta": ""
+                }
+            ], 
+            "header": [
+                "isim Fransızca abat-jour"
+            ]
+        }
+    ], 
+    "abajurcu": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Abajur yapan veya satan kimse", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim "
+            ]
+        }
+    ], 
+    "abajurculuk": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Abajurcunun yaptığı iş", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim "
+            ]
+        }
+    ], 
+    "abajurlu": [
+        {
+            "body": [
+                {
+                    "example": "Üstünde lacivert abajurlu, parlak bir madenden lamba. -P. Safa", 
+                    "meaning": "Abajuru olan", 
+                    "meta": "sıfat"
+                }
+            ], 
+            "header": [
+                "sıfat "
+            ]
+        }
+    ], 
+    "abajursuz": [
+        {
+            "body": [
+                {
+                    "example": "Tavandaki abajursuz, çelik elektrik lambasını yakmış okuyordu. -S. F. Abasıyanık", 
+                    "meaning": "Abajuru olmayan", 
+                    "meta": "sıfat"
+                }
+            ], 
+            "header": [
+                "sıfat "
+            ]
+        }
+    ], 
+    "abaküs": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "1.Sayı boncuğu", 
+                    "meta": "isim, matematik"
+                }, 
+                {
+                    "example": "", 
+                    "meaning": "2.Sütun başlığının üstüne yatay olarak konan ve kenarlarından biraz dışarı taşan taş blok", 
+                    "meta": "mimarlık"
+                }
+            ], 
+            "header": [
+                "isim, matematik Fransızca abacus"
+            ]
+        }
+    ], 
+    "abalı": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Aba giymiş olan", 
+                    "meta": "sıfat"
+                }
+            ], 
+            "header": [
+                "sıfat "
+            ]
+        }
+    ], 
+    "abandırma": [
+        {
+            "body": [
+                {
+                    "example": "", 
+                    "meaning": "Abandırmak işi", 
+                    "meta": "isim"
+                }
+            ], 
+            "header": [
+                "isim "
+            ]
+        }
+    ]
+}
