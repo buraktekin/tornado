@@ -61,6 +61,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
+./scrapy.cfg
 
 # Sphinx documentation
 docs/_build/
@@ -100,3 +101,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# custom file and folders
+./data.json
+./data_all_words.json
+./data_encoded.json
+.vscode
