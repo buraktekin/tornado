@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 # Project: TORNADO
 # ---------------------------------------------------------
 # Purpose: Crawling Turkish Language Society's web page
@@ -20,3 +21,25 @@ __credits__ = [
 	}
 ]
 
+import os
+import typing
+import requests
+import contextlib
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+
+class Tornado:
+    def __init__(self, source_url, list_of_paths):
+        self.source_url = source_url
+        self.list_of_paths = list_of_paths
+    
+    def read_word_list(self):
+        with contextlib.ExitStack() as stack:
+            files = [stack.enter_context(open(path)) for path in self.list_of_paths]
+
+        for file in files:
+            print(file)
+
+if __name__ == '__main__':
+    instance = Tornado("http://sozluk.gov.tr/gts?ara=", [project_dir + "/words/word_sample.txt"])
+    instance.read_word_list()
